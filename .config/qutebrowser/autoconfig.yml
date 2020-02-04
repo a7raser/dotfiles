@@ -1,0 +1,208 @@
+config_version: 2
+settings:
+  bindings.commands:
+    global:
+      normal:
+        ;m: hint links spawn mpv {hint-url}
+        F: hint all tab-bg
+        J: tab-prev
+        K: tab-next
+        xS: set content.javascript.enabled true
+        xs: set content.javascript.enabled false
+  colors.completion.category.bg:
+    global: '#1c1c1c'
+  colors.completion.category.border.bottom:
+    global: '#1c1c1c'
+  colors.completion.category.border.top:
+    global: '#1c1c1c'
+  colors.completion.category.fg:
+    global: '#ffffff'
+  colors.completion.even.bg:
+    global: '#262626'
+  colors.completion.item.selected.bg:
+    global: '#50fa7b'
+  colors.completion.item.selected.border.bottom:
+    global: '#50fa7b'
+  colors.completion.item.selected.border.top:
+    global: '#50fa7b'
+  colors.completion.item.selected.fg:
+    global: '#262626'
+  colors.completion.match.fg:
+    global: '#8484fe'
+  colors.completion.odd.bg:
+    global: '#262626'
+  colors.completion.scrollbar.bg:
+    global: '#262626'
+  colors.downloads.bar.bg:
+    global: '#262626'
+  colors.downloads.error.bg:
+    global: '#ff5555'
+  colors.downloads.error.fg:
+    global: black
+  colors.downloads.start.bg:
+    global: '#8484fe'
+  colors.downloads.start.fg:
+    global: black
+  colors.downloads.stop.bg:
+    global: '#50fa7b'
+  colors.downloads.stop.fg:
+    global: black
+  colors.hints.bg:
+    global: '#f1fa8c'
+  colors.hints.fg:
+    global: black
+  colors.messages.error.bg:
+    global: '#ff5555'
+  colors.messages.error.border:
+    global: '#ff5555'
+  colors.messages.error.fg:
+    global: black
+  colors.messages.warning.bg:
+    global: '#50fa7b'
+  colors.messages.warning.border:
+    global: '#50fa7b'
+  colors.messages.warning.fg:
+    global: black
+  colors.statusbar.caret.bg:
+    global: '#ff79c6'
+  colors.statusbar.caret.fg:
+    global: black
+  colors.statusbar.caret.selection.bg:
+    global: '#8484fe'
+  colors.statusbar.caret.selection.fg:
+    global: black
+  colors.statusbar.command.bg:
+    global: black
+  colors.statusbar.insert.bg:
+    global: '#50fa7b'
+  colors.statusbar.insert.fg:
+    global: black
+  colors.statusbar.normal.bg:
+    global: '#262626'
+  colors.statusbar.passthrough.bg:
+    global: '#8484fe'
+  colors.statusbar.passthrough.fg:
+    global: black
+  colors.statusbar.url.error.fg:
+    global: '#ff5555'
+  colors.statusbar.url.hover.fg:
+    global: '#8be9fd'
+  colors.statusbar.url.success.https.fg:
+    global: '#50fa7b'
+  colors.statusbar.url.warn.fg:
+    global: '#50fa7b'
+  colors.tabs.bar.bg:
+    global: '#262626'
+  colors.tabs.even.bg:
+    global: '#262626'
+  colors.tabs.indicator.error:
+    global: '#ff5555'
+  colors.tabs.indicator.start:
+    global: '#8484fe'
+  colors.tabs.indicator.stop:
+    global: '#50fa7b'
+  colors.tabs.odd.bg:
+    global: '#262626'
+  colors.tabs.selected.even.bg:
+    global: '#dadada'
+  colors.tabs.selected.even.fg:
+    global: '#262626'
+  colors.tabs.selected.odd.bg:
+    global: '#dadada'
+  colors.tabs.selected.odd.fg:
+    global: '#262626'
+  content.cookies.accept:
+    global: no-3rdparty
+  content.host_blocking.whitelist:
+    global:
+    - thepiratebay.org
+  content.javascript.enabled:
+    global: true
+  content.notifications:
+    https://www.facebook.com: false
+    https://www.reddit.com: false
+  content.windowed_fullscreen:
+    global: false
+  fonts.completion.category:
+    global: bold 8pt monospace
+  fonts.completion.entry:
+    global: 8pt monospace
+  fonts.debug_console:
+    global: 8pt monospace
+  fonts.downloads:
+    global: 8pt monospace
+  fonts.hints:
+    global: bold 8pt monospace
+  fonts.keyhint:
+    global: 8pt monospace
+  fonts.messages.error:
+    global: 8pt monospace
+  fonts.messages.info:
+    global: 8pt monospace
+  fonts.messages.warning:
+    global: 8pt monospace
+  fonts.monospace:
+    global: Hack
+  fonts.prompts:
+    global: 8pt sans-serif
+  fonts.statusbar:
+    global: 8pt monospace
+  fonts.tabs:
+    global: 8pt monospace
+  fonts.web.family.sans_serif:
+    global: Roboto
+  fonts.web.family.standard:
+    global: Roboto
+  fonts.web.size.default:
+    global: 16
+  fonts.web.size.default_fixed:
+    global: 13
+  scrolling.bar:
+    global: always
+  scrolling.smooth:
+    global: false
+  spellcheck.languages:
+    global:
+    - en-US
+    - en-GB
+  statusbar.hide:
+    global: false
+  statusbar.padding:
+    global:
+      bottom: 1
+      left: 0
+      right: 0
+      top: 1
+  tabs.max_width:
+    global: 300
+  tabs.show:
+    global: multiple
+  url.searchengines:
+    global:
+      DEFAULT: https://duckduckgo.com/?q={}
+      g: https://www.google.com/search?q={}
+      w: https://en.wikipedia.org/w/index.php?search={}
+      wt: https://en.wiktionary.org/w/index.php?search={}
+      y: https://www.youtube.com/results?search_query={}
+  zoom.default:
+    global: '80'
+  zoom.levels:
+    global:
+    - 25%
+    - 33%
+    - 50%
+    - 67%
+    - 75%
+    - '80'
+    - 90%
+    - 100%
+    - 110%
+    - 125%
+    - 150%
+    - 175%
+    - 200%
+    - 250%
+    - 300%
+    - 400%
+    - 500%
+

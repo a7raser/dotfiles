@@ -1,0 +1,211 @@
+### Hotkeys
+
+#Terminal
+super + Return
+	alacritty
+#Program Launcher
+super + d
+	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
+#Run
+super + shift + d
+	rofi -show run -side-mode -config ~/.config/rofi/config.rasi
+#Task Switcher
+super + q
+	rofi -show window -side-mode -config ~/.config/rofi/config.rasi 
+#Screenshot
+super + z
+	scrot ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
+	notify-send "Screenshot Saved: scrn-$(date +"%Y-%m-%d-%H-%M-%S").png"
+#Screenclip
+super + x
+	sleep 0.2; \
+	scrot -s ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
+	sleep 0.2; \
+	notify-send "Screenclip Saved: scrn-$(date +"%Y-%m-%d-%H-%M-%S").png"	
+#Lock
+super + Escape
+	betterlockscreen -l dimblur
+#Logout
+alt + Escape
+	bspc quit
+#Restart
+super + shift + Escape
+	systemctl reboot
+#Shutdown
+alt + shift + Escape
+	systemctl poweroff
+#Sxhkd Config Reload
+super + shift + z
+	pkill -USR1 -x sxhkd; \
+	sleep 0.2; \
+	notify-send 'Sxhkd Reloaded'
+#Restart Bspwm
+super + shift + x
+	bspc {wm -r}; \
+	sleep 0.5; \ 
+	notify-send 'Bspwm Restarted'
+#Close & Kill
+super + shift + q
+	bspc node -c
+alt + F4
+	bspc node -k
+
+
+### Desktops
+
+#Focus/Send Node (to) Desktop(n)
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} ^{1-9,10}
+#Send Node & Follow to Desktop(n)
+super + ctrl + {1-9,0}
+	bspc node -d ^{1-9,10} --follow
+#Summon Nodes From Desktop(n) to Focused Desktop
+#Shift = Send Nodes from Focused Desktop to Desktop(n)
+alt + {_, shift + }{1-9,0}
+	bspwm_multinode {--db,--ds} {1-9,10}
+#Follow Nodes Sent to Desktop(n)
+alt + ctrl + {1-9,0}
+	bspwm_multinode --ds {1-9,10} --follow
+#Close/Kill Nodes in Focused Desktop
+#Excludes Focused or Marked Nodes
+alt + shift + q
+	bspwm_multinode --{close}-all-local-non-focused
+alt + shift  + F4
+	bspwm_multinode --{kill}-all-local-non-focused
+#Focus Last Window/Desktop
+{alt,super} + grave
+	bspc {node,desktop} -f last.local
+#Focus Next/Previous Window
+alt + {_,shift} + Tab
+	bspc node -f {next,prev}
+#Focus Next/Previous Desktop
+super + {_,shift} + Tab
+	bspc desktop -f {next,prev}
+#Focus/Move Window to the Biggest Space
+super + {_,shift + }w
+	bspc node -{f,s} biggest.local
+#Focus Node in Given Direction
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+#Move Node in Given Direction
+super + shift + {h,j,k,l}
+	bspwm_move {west,south,north,east}
+#Swap Window With Last Window
+super + apostrophe
+	bspc node -s last
+#Move Window to Last Split
+super + semicolon
+	bspc query --nodes -n focused.automatic \
+	&& bspc node -n last.\!automatic \
+	|| bspc node last.leaf -n focused
+
+
+### Layout
+
+#Rotate Desktop
+super + {_,shift + }r
+	bspc node @/ --rotate {90,-90}
+#Circulate Leaves
+super + {_,shift + }c
+	bspc node @/ --circulate {backward,forward}
+#Make Split Ratios Equal 
+super + equal
+	bspc node @/ --equalize
+#Make Split Ratios Balanced
+super + minus
+	bspc node @/ --balance
+#Flip Layout Vertically/Horizontally
+super + {_,shift + }v
+	bspc node @/ --flip {horizontal,vertical}
+#Insert Receptacle
+super + s
+	bspc node -i
+#Send to Preselection/Receptacle
+super + {_,shift + }e
+	{bspwm_presel, bspc node -n 'last.!automatic.local'}
+#Kill/Remove First Matching Receptacle from the Current Desktop.
+#Ctrl = Kill All.
+super + {shift + , ctrl + }s
+	{ \
+	bspc node 'any.leaf.!window.local' -k, \
+	bspwm_multinode --kill-all-receptacles \
+	}
+#Focus Node for Preselection
+alt + {p,o,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+
+### Node State
+
+#Toggle Node Tiling
+super + t
+	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
+	bspc node --state \~$state
+#Toggle Node Pseudo-Tiling
+super + g	
+	bspc node --state \~pseudo_tiled
+#Toggle Node Fullscreen
+super + f
+	bspc node --state \~fullscreen
+#Toggle Monocle
+super + b
+	bspc desktop -l next
+#Set Node Flag
+alt + {u,i,n,m}
+	bspc node -g {sticky,private,locked,marked}
+
+
+### Pre-Select
+
+# Preselect Direction
+alt + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+#Preselect Ratio
+hyper + alt + {1-9}
+	bspc node -o 0.{1-9}
+#Cancel Focused Node Preselection
+alt + shift + space
+	bspc node -p cancel
+#Cancel Focused Desktop Preselection
+alt + ctrl + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+### Multimedia
+
+#Audio
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+XF86AudioPlay
+	playerctl play-pause @DEFAULT_SOURCE@
+XF86AudioNext
+	playerctl next @DEFAULT_SOURCE@
+XF86AudioPrev
+	playerctl prev @DEFAULT_SOURCE@
+#Brightness
+XF86MonBrightnessUp 
+	light -A 10
+XF86MonBrightnessDown 
+	light -U 10
+
+
+### Resize
+
+#Expand
+ctrl + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#Contract
+ctrl + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#Move Float
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+#Adjust Gaps
+super + bracket{left,right}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5))

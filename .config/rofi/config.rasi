@@ -1,0 +1,12 @@
+configuration {
+theme: "~/.cache/wal/colors-rofi-dark.rasi";
+lines: 12;
+padding: 18;
+width: 30;
+font: "DejaVu Sans 11";
+location: 0;
+show-icons: true;
+}
+
+
+
