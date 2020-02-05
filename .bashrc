@@ -6,7 +6,7 @@ export PATH=$PATH:~/bin
 
 #Pywal Config
 (cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors.tty.sh
+source ~/.cache/wal/colors-tty.sh
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

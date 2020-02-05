@@ -11,11 +11,10 @@ _check() {
 
 ### Autostart
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-feh --bg-scale $HOME/media/images/wallpapers/greatwave.jpg &
-betterlockscreen -u $HOME/media/images/wallpapers/greatwave.jpg &
 dunst -c $HOME/.config/dunst/dunstrc &
 picom -bcCG -o 0.5 -r 12 -l -17 -t -7 & 
-launch.sh
+launch.sh &
+wptheme.sh &
 
 ### MONITORS
 bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10 
@@ -24,7 +23,7 @@ bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
 ### BSPWM Configuration
 #bspc config border_radius        8
 _bc initial_polarity 		  second_child
-_bc border_width                  1
+_bc border_width                  1 
 _bc window_gap                    10
 _bc top_padding                   18
 _bc bottom_padding                0
@@ -46,11 +45,16 @@ _bc pointer_action2 resize_side
 _bc pointer_action3 resize_corner
 
 ### BSPWM Colours
-_bc normal_border_color		      "#231f20"
-_bc active_border_color	              "#231f20"
-_bc focused_border_color	      "#009ddc"
-_bc presel_feedback_color	      "#7291b6"
-_bc urgent_border_color 	      "#ee2e24"
+. "${HOME}/.cache/wal/colors.sh"
+_bc normal_border_color "$color1"
+#_bc normal_border_color		      "#231f20"
+_bc active_border_color "$color2"
+#_bc active_border_color	              "#231f20"
+_bc focused_border_color "$color7"
+#_bc focused_border_color	      "#009ddc"
+_bc presel_feedback_color "$color15"
+#_bc presel_feedback_color	      "#7291b6"
+#_bc urgent_border_color 	      "#ee2e24"
 
 ### Hide Polybar on Fullscreen
 xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP-1)

@@ -37,5 +37,12 @@ case "$1" in
 	--ds|--send-desktop-there)
 		_query_nodes 'any.local' -d "$2"
 		;;
+	--dsnf|--send-desktop-there-non-focused)
+		_query_nodes '.!focused.!marked.local.window' -d "$2"
+		;;
+	--dsf|--send-desktop-follow)
+		_query_nodes 'any.local' -d "$2" --follow
+		;;
+	
 esac
 
