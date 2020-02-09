@@ -107,6 +107,7 @@ endif
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug '/usr/bin/fzf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'dylanaraps/wal.vim'
 call plug#end()
