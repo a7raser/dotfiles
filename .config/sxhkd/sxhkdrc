@@ -164,8 +164,8 @@ hyper + {u,i,n,m}
 alt + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 #Preselect Ratio
-hyper + alt + {1-9}
-	bspc node -o 0.{1-9}
+#hyper + alt + {1-9}
+#	bspc node -o {1-9}
 #Cancel Focused Node Preselection
 alt + shift + space
 	bspc node -p cancel
