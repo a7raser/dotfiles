@@ -26,7 +26,6 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
-set mouse=a
 
 set nocompatible
 
@@ -115,5 +114,7 @@ let g:lightline = {
             \ 'colorscheme': 'wal',
             \ }
 " }}}
+
+set mouse=a
 
 " vim:foldmethod=marker:foldlevel=0
