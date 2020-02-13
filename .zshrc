@@ -72,4 +72,7 @@ source $ZSH/oh-my-zsh.sh
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVM_DIR="$HOME/.nvm"
 
+### Alias'
+alias vim='nvim'
+
 set -o vi

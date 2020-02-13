@@ -1,22 +1,19 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background = #99000000
-background-alt = #222
-background-semi = #aa2F343F
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-;foreground-alt = ${xrdb:color7:#222}
-foreground-alt = #ffffff
-;primary = ${xrdb:color1:#222}
-primary = #ffb52a
-;secondary = ${xrdb:color2:#222}
-secondary = #e60053
-;alert = ${xrdb:color3:#222}
-alert = #bd2c40
-adapta-red = #FF5252
-adapta-yellow = #C9BC0E
-adapta-lightgreen = #4DB6AC
-adapta-green = #009688
+background = ${xrdb:color0:#222}
+;background = #99000000
+;background-alt = #222
+background-semi = ${xrdb:color2:#222}
+;background-semi = #aa2F343F
+foreground = ${xrdb:color7:#222}
+;foreground = #dfdfdf
+foreground-alt = ${xrdb:color7:#222}
+;foreground-alt = #ffffff
+primary = ${xrdb:color1:#222}
+;primary = #ffb52a
+secondary = ${xrdb:color2:#222}
+;secondary = #e60053
+alert = ${xrdb:color3:#222}
+;alert = #bd2c40
 
 [bar/bspwm]
 monitor = eDP-1
@@ -31,7 +28,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0  
 line-color = #f00
 
 ;border-size = 2
@@ -71,22 +68,6 @@ cursor-click = pointer
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -111,8 +92,8 @@ ws-icon-7 = 8;
 ws-icon-8 = 9; 
 ws-icon-9 = 10;
 label-focused = %icon%
-label-focused-background = ${colors.background-semi}
-label-focused-underline= #ccff33
+label-focused-background = ${colors.background-semi} 
+;label-focused-underline= #ccff33
 label-focused-padding = 2
 
 label-occupied = %icon%
@@ -127,6 +108,7 @@ label-empty-foreground = #808080
 label-empty-padding = 2
 
 label-separator = 
+
 
 [module/mpd]
 type = internal/mpd
@@ -169,7 +151,8 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f47b00
+format-underline = ${xrdb:color5:#222} 
+;format-underline = #f47b00
 label = %percentage:2%%
 
 [module/memory]
@@ -177,7 +160,8 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #FFDF00
+format-underline = ${xrdb:color4:#222} 
+;format-underline = #FFDF00
 label = %percentage_used%%
 
 [module/wlan]
@@ -186,7 +170,8 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #66ff33
+format-connected-underline = ${xrdb:color3:#222} 
+;format-connected-underline = #66ff33
 label-connected = %essid% 
 
 format-disconnected = <label-disconnected>
@@ -207,7 +192,8 @@ date-alt =
 time = %H:%M:%S
 time-alt = %H:%M
 
-format-underline = #cc00cc
+;format-underline = #cc00cc
+format-underline = ${xrdb:color8:#222}
 
 label = %date% %time%
 
@@ -228,7 +214,8 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-foreground = ${colors.foreground-alt}
 
-format-volume-underline = #0099ff
+format-volume-underline = ${xrdb:color2:#222}
+;format-volume-underline = #0099ff
 
 [module/battery2]
 type = internal/battery
@@ -308,7 +295,8 @@ thermal-zone = 1
 warn-temperature = 75
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${xrdb:color7:#222}
+;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -320,34 +308,6 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
-
-[module/cpu-graph]
-type = internal/cpu
-interval = 0.08
-;format = " <ramp-coreload>"
-format = " <ramp-coreload>"
-format-margin = 1
-ramp-coreload-0 = ▁ 
-ramp-coreload-0-foreground = ${colors.foreground}
-ramp-coreload-1 = ▂ 
-ramp-coreload-1-foreground = ${colors.foreground}
-ramp-coreload-2 = ▃ 
-ramp-coreload-2-foreground = ${colors.adapta-lightgreen}
-ramp-coreload-3 = ▄ 
-ramp-coreload-3-foreground = ${colors.adapta-green}
-ramp-coreload-4 = ▅ 
-ramp-coreload-4-foreground = ${colors.adapta-yellow}
-ramp-coreload-5 = ▆ 
-ramp-coreload-5-foreground = ${colors.adapta-yellow}
-ramp-coreload-6 = ▇ 
-ramp-coreload-6-foreground = ${colors.adapta-red}
-ramp-coreload-7 = █ 
-ramp-coreload-7-foreground = ${colors.adapta-red}
-ramp-coreload-font = 3
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
-format-underline = ${colors.foreground-alt}
-format-padding = 3
 
 [module/menu]
 type = custom/menu

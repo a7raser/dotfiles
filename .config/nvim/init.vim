@@ -2,10 +2,10 @@
 
 " Number lines
 set number
-jset relativenumber
+set relativenumber
 
 " Spaces & Tabs
-jset tabstop=4
+set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -104,7 +104,6 @@ Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 map <C-o> :NERDTreeToggle<CR>
-colorscheme wal
 hi Normal guibg=NONE ctermbg=NONE
 let g:lightline = {
             \ 'colorscheme': 'wal',
