@@ -1,4 +1,4 @@
-### Hotkeys
+### Hotkeys{{{
 
 #Terminal
 super + Return
@@ -26,7 +26,7 @@ super + x
 super + Escape
 	betterlockscreen -l dimblur
 #Logout
-alt + Escape
+#alt + Escape
 	bspc quit
 #Restart
 super + shift + Escape
@@ -49,9 +49,9 @@ super + shift + q
 	bspc node -c
 alt + F4
 	bspc node -k
+# }}}
 
-
-### Desktops
+### Desktops{{{
 
 #Focus/Send Node (to) Desktop(n)
 super + {_,shift + }{1-9,0}
@@ -101,9 +101,9 @@ super + semicolon
 	bspc query --nodes -n focused.automatic \
 	&& bspc node -n last.\!automatic \
 	|| bspc node last.leaf -n focused
+# }}}
 
-
-### Layout
+### Layout{{{
 
 #Rotate Desktop
 super + {_,shift + }r
@@ -136,9 +136,9 @@ super + {shift + , ctrl + }s
 #Focus Node for Preselection
 hyper + {p,o,comma,period}
 	bspc node -f @{parent,brother,first,second}
+# }}}
 
-
-### Node State
+### Node State{{{
 
 #Toggle Node Tiling
 super + t
@@ -154,27 +154,27 @@ super + f
 super + b
 	bspc desktop -l next
 #Set Node Flag
-hyper + {u,i,n,m}
+super + {u,i,n,m}
 	bspc node -g {sticky,private,locked,marked}
+# }}}
 
-
-### Pre-Select
+### Pre-Select{{{
 
 # Preselect Direction
-alt + {h,j,k,l}
+hyper + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 #Preselect Ratio
-#hyper + alt + {1-9}
-#	bspc node -o {1-9}
+hyper + {1-9}
+	bspc node -o {1-9}
 #Cancel Focused Node Preselection
-alt + shift + space
+hyper + space
 	bspc node -p cancel
 #Cancel Focused Desktop Preselection
-alt + ctrl + space
+super + hyper + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# }}}
 
-
-### Multimedia
+### Multimedia{{{
 
 #Audio
 XF86AudioRaiseVolume
@@ -196,19 +196,16 @@ XF86MonBrightnessUp
 	light -A 10
 XF86MonBrightnessDown 
 	light -U 10
+# }}}
 
+### Resize{{{
 
-### Resize
-
-#Expand
-ctrl + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-#Contract
-ctrl + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#Resize
+alt + hyper + {h,j,k,l}
+    bspwm_resize {west,south,north,east} 50
 #Move Float
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 #Adjust Gaps
 super + bracket{left,right}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5))
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5))# }}}

@@ -76,3 +76,4 @@ export NVM_DIR="$HOME/.nvm"
 alias vim='nvim'
 
 set -o vi
+KEYTIMEOUT=1

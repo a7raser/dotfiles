@@ -128,6 +128,7 @@ settings:
     https://calendar.google.com: true
     https://www.facebook.com: false
     https://www.reddit.com: false
+    https://www.youtube.com: false
   content.register_protocol_handler:
     https://calendar.google.com?cid=%25s: true
   content.windowed_fullscreen:

@@ -60,11 +60,13 @@ _bc presel_feedback_color "$color15"
 xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP-1)
 
 ### Xmodmap
-#[ -f "$HOME"/.Xmodmap ] && xmodmap "$HOME"/.Xmodmap
-#Replaced below
+[ -f "$HOME"/.Xmodmap ] && xmodmap "$HOME"/.Xmodmap
+
+### Xcape
+xcape -e "Hyper_L=Escape"
 
 ### Keyboard Options
-setxkbmap -option custom:super_esc
+#setxkbmap -option custom:hyper_esc
 
 ### Cursor
 xsetroot -cursor_name left_ptr
