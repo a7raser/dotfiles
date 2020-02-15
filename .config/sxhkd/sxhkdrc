@@ -7,11 +7,14 @@ super + Return
 super + d
 	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
 #Run
-super + shift + d
-	rofi -show run -side-mode -config ~/.config/rofi/config.rasi
+alt + d 
+    rofi -show run -side-mode -config ~/.config/rofi/config.rasi
 #Task Switcher
-super + q
-	rofi -show window -side-mode -config ~/.config/rofi/config.rasi 
+hyper + d
+	rofi -show window -side-mode -config ~/.config/rofi/config.rasi
+#Ssh
+super + shift + d
+	rofi -show ssh -side-mode -config ~/.config/rofi/config.rasi
 #Screenshot
 super + z
 	scrot ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
@@ -26,7 +29,7 @@ super + x
 super + Escape
 	betterlockscreen -l dimblur
 #Logout
-#alt + Escape
+alt + Escape
 	bspc quit
 #Restart
 super + shift + Escape
@@ -45,8 +48,8 @@ super + shift + x
 	sleep 0.5; \ 
 	notify-send 'Bspwm Restarted'
 #Close & Kill
-super + shift + q
-	bspc node -c
+super + {_,shift +}q
+	bspc node -{c,k}
 alt + F4
 	bspc node -k
 # }}}
@@ -85,7 +88,7 @@ alt + {_,shift} + Tab
 super + {_,shift} + Tab
 	bspc desktop -f {next,prev}
 #Focus/Move Window to the Biggest Space
-super + {_,shift + }w
+super + {_,shift + }semicolon
 	bspc node -{f,s} biggest.local
 #Focus Node in Given Direction
 super + {h,j,k,l}
@@ -96,11 +99,6 @@ super + shift + {h,j,k,l}
 #Swap Window With Last Window
 super + apostrophe
 	bspc node -s last
-#Move Window to Last Split
-super + semicolon
-	bspc query --nodes -n focused.automatic \
-	&& bspc node -n last.\!automatic \
-	|| bspc node last.leaf -n focused
 # }}}
 
 ### Layout{{{
@@ -140,6 +138,30 @@ hyper + {p,o,comma,period}
 
 ### Node State{{{
 
+#Hide Node
+super + w
+    stack_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(bspc query -N -n focused);              \
+    echo "$target_node" >>  "$stack_file";                \
+    bspc node "$target_node" --flag hidden=on
+    #bspc node -g hidden
+#Unhide Most Recent Node
+super + shift + w
+    stack_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(tail --lines=1 "$stack_file");          \
+    sed -i '$d' "$stack_file";                            \
+    bspc node "$target_node" --to-desktop focused;        \
+    bspc node "$target_node" --flag hidden=off
+    #bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+#Hide All
+alt + w
+    bspwm_multinode --nha
+#Unhide All Local
+alt + shift + w
+    bspwm_multinode --nlu
+#Unhide All Global
+alt + hyper + w
+    bspwm_multinode --nua
 #Toggle Node Tiling
 super + t
 	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
