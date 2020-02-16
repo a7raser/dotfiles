@@ -53,7 +53,7 @@ case "$1" in
         _query_nodes '.hidden' -g hidden=off
         ;;
     --nlu|--unhide-nodes-local)
-        _query_nodes 'local.hidden' -g hidden=off
+        _query_nodes '.local.hidden' -g hidden=off
         ;;
 esac
 
