@@ -8,39 +8,11 @@ export PATH=$PATH:~/bin
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
-# Set colorful PS1 only on colorful terminals.
-# dircolors --print-database uses its own built-in database
-# instead of using /etc/DIR_COLORS.  Try to use the external file
-# first to take advantage of user additions.  Use internal bash
-# globbing instead of external grep binary.
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
-match_lhs=""
-[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
-	&& type -P dircolors >/dev/null \
-	&& match_lhs=$(dircolors --print-database)
-[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
-
-if ${use_color} ; then
-	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-	if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
-			eval $(dircolors -b ~/.dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
-			eval $(dircolors -b /etc/DIR_COLORS)
-		fi
-	fi
-	PS1="[\[\e[1;32m\]\u\[\e[m\]: \[\e[1;31m\]\W\[\e[m\]]$ "
-
-else
-    PS1="[\[\e[1;32m\]\u\[\e[m\]: \[\e[1;31m\]\W\[\e[m\]]$ "
+#Pureline
+#To use, copy a config from /usr/share/pureline/configs to ~/.pureline.conf
+#then add the following lines to ~/.bashrc:
+if [[ -r "/usr/share/pureline/pureline" ]]; then
+    source /usr/share/pureline/pureline ~/.pureline.conf
 fi
 
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -39,6 +39,8 @@ map <C-o> :NERDTreeToggle<CR>
 hi Normal guibg=NONE ctermbg=NONE
 let g:lightline = {
             \ 'colorscheme': 'wal',
+            \ 'separator': { 'left': '', 'right': '' },
+            \ 'subseparator': { 'left': '', 'right': '' },
             \ }
 " }}}
 
@@ -56,7 +58,6 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set wrap
-set textwidth=79
 set formatoptions=tcqrn1
 set noshiftround
 set autoindent
@@ -64,7 +65,7 @@ set smartindent
 " }}}
 
 """ Config {{{
-"set no compatible
+set nocompatible
 set mouse=a
 
 " Cursor Motion
@@ -112,7 +113,7 @@ map <leader><space> :let @/=''<cr>
 " }}}
 
 """ Escape Timeout {{{
-set timeoutlen=0
+set timeoutlen=100
 set ttimeoutlen=0
 " }}}
 

@@ -8,7 +8,7 @@ mkdir media
 mkdir projects
 
 #install apps
-sudo pacman -S <app list> git pywal-pyton xorg-server rofi bspwm ttf-hack ttf-font-awesome xcape
+sudo pacman -S <app list> git pywal-python xorg-server rofi bspwm ttf-hack ttf-font-awesome xcape xclip xmodmap
 yay -S polybar
 
 #clone repo

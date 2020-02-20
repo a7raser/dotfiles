@@ -19,6 +19,8 @@ set smartindent
 
 """ Config {{{
 
+set nocompatible
+
 " Cursor Motion
 set visualbell
 set scrolloff=3
