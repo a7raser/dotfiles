@@ -32,16 +32,24 @@ Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug '/usr/bin/fzf'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'lervag/vimtex'
 Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 map <C-o> :NERDTreeToggle<CR>
 hi Normal guibg=NONE ctermbg=NONE
+
+"Lightline
 let g:lightline = {
             \ 'colorscheme': 'wal',
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '', 'right': '' },
             \ }
+
+"Vimtex
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_progname = 'nvr'
+
 " }}}
 
 """ Formatting {{{ 

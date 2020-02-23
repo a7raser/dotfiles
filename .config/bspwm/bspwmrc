@@ -63,7 +63,7 @@ xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP-1)
 [ -f "$HOME"/.Xmodmap ] && xmodmap "$HOME"/.Xmodmap
 
 ### Xcape
-xcape -t 100 -e "Hyper_L=Escape"
+xcape -e "Hyper_L=Escape"
 
 ### Keyboard Options
 #setxkbmap -option custom:hyper_esc
