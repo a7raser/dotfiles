@@ -31,6 +31,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 ### Run programs
-
 wal -R
 exec bspwm
