@@ -33,7 +33,6 @@ Plug 'itchyny/lightline.vim'
 Plug '/usr/bin/fzf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
-Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 map <C-o> :NERDTreeToggle<CR>

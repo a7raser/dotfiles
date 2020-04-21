@@ -32,4 +32,4 @@ fi
 
 ### Run programs
 wal -R
-exec bspwm
+exec startplasma-x11
