@@ -7,10 +7,10 @@ super + Return
 super + d
 	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
 #Run
-alt + d 
+alt + shift + d 
     rofi -show run -side-mode -config ~/.config/rofi/config.rasi
 #Task Switcher
-hyper + d
+alt + d
 	rofi -show window -side-mode -config ~/.config/rofi/config.rasi
 #Ssh
 super + shift + d
@@ -64,14 +64,14 @@ super + ctrl + {1-9,0}
 	bspc node -d ^{1-9,10} --follow
 #Summon Nodes From Desktop(n) to Focused Desktop
 #Shift = Send Nodes from Focused Desktop to Desktop(n)
-alt + {_, shift + }{1-9,0}
-	bspwm_multinode {--db,--ds} ^{1-9,10}
+alt + {_, shift, ctrl + }{1-9,0}
+	bspwm_multinode {--db,--ds, --dsnf} ^{1-9,10}
 #Follow Nodes Sent to Desktop(n)
-alt + ctrl + {1-9,0}
-	bspwm_multinode --dsf ^{1-9,10}
+#alt + ctrl + {1-9,0}
+#	bspwm_multinode --dsf ^{1-9,10}
 #Send All Nodes Except Focus/Marked to Desktop(n)
-alt + hyper + {1-9,0}
-	bspwm_multinode  --dsnf ^{1-9,0}
+#alt + hyper + {1-9,0}
+#	bspwm_multinode  --dsnf ^{1-9,0}
 #Close/Kill Nodes in Focused Desktop
 #Excludes Focused or Marked Nodes
 alt + shift + q
@@ -132,7 +132,7 @@ super + {shift + , ctrl + }s
 	bspwm_multinode --kill-all-receptacles \
 	}
 #Focus Node for Preselection
-hyper + {p,o,comma,period}
+alt + {p,o,comma,period}
 	bspc node -f @{parent,brother,first,second}
 # }}}
 
@@ -160,7 +160,7 @@ alt + w
 alt + shift + w
     bspwm_multinode --nlu
 #Unhide All Global
-alt + hyper + w
+alt + ctrl + w
     bspwm_multinode --nua
 #Toggle Node Tiling
 super + t
@@ -182,17 +182,17 @@ super + {u,i,n,m}
 
 ### Pre-Select{{{
 
-# Preselect Direction
-hyper + {h,j,k,l}
+ Preselect Direction
+alt + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 #Preselect Ratio
-hyper + {1-9}
+super + alt + {1-9}
 	bspc node -o {1-9}
 #Cancel Focused Node Preselection
-hyper + space
+alt + space
 	bspc node -p cancel
 #Cancel Focused Desktop Preselection
-super + hyper + space
+shift + alt + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 # }}}
 
@@ -223,7 +223,7 @@ XF86MonBrightnessDown
 ### Resize{{{
 
 #Resize
-alt + hyper + {h,j,k,l}
+alt + shift + {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
 #Move Float
 super + {Left,Down,Up,Right}

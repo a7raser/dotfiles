@@ -1,6 +1,6 @@
 """ Mappings"{{{
 
-let mapleader = ","
+let mapleader = " "
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -28,25 +28,24 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
-Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
 call plug#end()
 
-map <C-o> :NERDTreeToggle<CR>
-hi Normal guibg=NONE ctermbg=NONE
+map <C-o> :Ntree<CR>
+let g:netrw_banner = 0
+map <leader>o :FZF<CR>
 
 "Lightline
 let g:lightline = {
-            \ 'colorscheme': 'wal',
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '', 'right': '' },
             \ }
 
 "Vimtex
-let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_method = 'okular'
 let g:vimtex_compiler_progname = 'nvr'
 
 " }}}
@@ -117,11 +116,6 @@ set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr>
-" }}}
-
-""" Escape Timeout {{{
-set timeoutlen=100
-set ttimeoutlen=0
 " }}}
 
 """ Folding {{{

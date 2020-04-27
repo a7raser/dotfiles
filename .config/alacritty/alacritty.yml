@@ -72,15 +72,6 @@ font:
   italic:
     family: Hack
     style: Italic
-  # Normal (roman) font face
-  #normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux) monospace
-    #   - (Windows) Consolas
-    #family: monospace
 
   # Point size
   size: 6.0

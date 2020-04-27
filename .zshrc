@@ -2,9 +2,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
-
 export ZSH="/home/a7raser/.oh-my-zsh"
 export PATH=$PATH:~/bin
 
