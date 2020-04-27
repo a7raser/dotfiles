@@ -107,6 +107,7 @@ set listchars=tab:▸\ ,eol:¬
 "  set list " To enable by default
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
+map <leader>; :terminal<CR>
 " }}}
 
 """ Search Tools {{{

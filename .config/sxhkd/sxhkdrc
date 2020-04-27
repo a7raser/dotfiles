@@ -3,6 +3,9 @@
 #Terminal
 super + Return
 	alacritty
+#Terminal + Tmux
+super + shift + Return
+    alacritty -e tmux
 #Program Launcher
 super + d
 	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
@@ -182,17 +185,17 @@ super + {u,i,n,m}
 
 ### Pre-Select{{{
 
- Preselect Direction
-alt + {h,j,k,l}
+#Preselect Direction
+super + space; {h,j,k,l}
 	bspc node -p {west,south,north,east}
 #Preselect Ratio
 super + alt + {1-9}
 	bspc node -o {1-9}
 #Cancel Focused Node Preselection
-alt + space
+super + shift + space
 	bspc node -p cancel
 #Cancel Focused Desktop Preselection
-shift + alt + space
+alt + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 # }}}
 
