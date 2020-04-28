@@ -20,14 +20,18 @@ super + shift + d
 	rofi -show ssh -side-mode -config ~/.config/rofi/config.rasi
 #Screenshot
 super + z
-	scrot ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
+    maim -u | xclip -selection clipboard -t image/png; \
+    notify-send "Screenshot Saved to Clipboard."
+super + shift + z
+    maim -u ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
 	notify-send "Screenshot Saved: scrn-$(date +"%Y-%m-%d-%H-%M-%S").png"
 #Screenclip
 super + x
-	sleep 0.2; \
-	scrot -s ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
-	sleep 0.2; \
-	notify-send "Screenclip Saved: scrn-$(date +"%Y-%m-%d-%H-%M-%S").png"	
+    maim -s -u | xclip -selection clipboard -t image/png; \
+    notify-send "Screenclip Saved to Clipboard."
+super + shift + x
+    maim -s -u ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png; \
+    notify-send "Screenclip Saved: scrn-$(date +"%Y-%m-%d-%H-%M-%S").png"
 #Lock
 super + Escape
 	betterlockscreen -l dimblur
@@ -41,12 +45,12 @@ super + shift + Escape
 alt + shift + Escape
 	systemctl poweroff
 #Sxhkd Config Reload
-super + shift + z
+super + space; z
 	pkill -USR1 -x sxhkd; \
 	sleep 0.2; \
 	notify-send 'Sxhkd Reloaded'
 #Restart Bspwm
-super + shift + x
+super + space; x
 	bspc {wm -r}; \
 	sleep 0.5; \ 
 	notify-send 'Bspwm Restarted'
@@ -186,11 +190,11 @@ super + {u,i,n,m}
 ### Pre-Select{{{
 
 #Preselect Direction
-super + space; {h,j,k,l}
+alt + shift + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 #Preselect Ratio
-super + alt + {1-9}
-	bspc node -o {1-9}
+super + space; {1-9}
+	bspc node -o 0.{1-9}
 #Cancel Focused Node Preselection
 super + shift + space
 	bspc node -p cancel
@@ -217,19 +221,17 @@ XF86AudioNext
 XF86AudioPrev
 	playerctl prev @DEFAULT_SOURCE@
 #Brightness
-XF86MonBrightnessUp 
-	light -A 10
-XF86MonBrightnessDown 
-	light -U 10
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+    xbacklight {-dec,-inc} 5
 # }}}
 
 ### Resize{{{
 
 #Resize
-alt + shift + {h,j,k,l}
+super + space: {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
 #Move Float
-super + {Left,Down,Up,Right}
+super + space: super + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 #Adjust Gaps
 super + bracket{left,right}
