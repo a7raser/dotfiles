@@ -36,11 +36,13 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'frazrepo/vim-rainbow'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdtree'
 call plug#end()
 
-map <C-o> :Ntree<CR>
-let g:netrw_banner = 0
+map <C-o> :NERDTreeToggle<CR>
 map <leader>o :FZF<CR>
 
 "Lightline
