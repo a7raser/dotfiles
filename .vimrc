@@ -34,6 +34,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
+Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 map <C-o> :Ntree<CR>
@@ -49,6 +52,7 @@ let g:lightline = {
 "Vimtex
 let g:vimtex_view_method = 'okular'
 let g:vimtex_compiler_progname = 'nvr'
+let g:tex_flavor = 'latex'
 
 " }}}
 
