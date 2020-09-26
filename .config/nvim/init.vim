@@ -54,6 +54,8 @@ let g:vimtex_view_method = 'okular'
 let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor = 'latex'
 
+"Vim-Rainbow
+"let g:rainbow_active = 1
 
 " }}}
 
