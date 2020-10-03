@@ -1,5 +1,7 @@
 set ttymouse=sgr
 set mouse=a
+let g:dracula_colorterm = 0
+colorscheme dracula
 """ Mappings"{{{
 
 let mapleader = " "
@@ -40,6 +42,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 map <C-o> :NERDTreeToggle<CR>
