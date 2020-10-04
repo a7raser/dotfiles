@@ -88,6 +88,7 @@ set formatoptions=tcqrn1
 set noshiftround
 set autoindent
 set smartindent
+set breakindent
 " }}}
 
 """ Config {{{
@@ -302,3 +303,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>d
 " }}}
+
+" vim:foldmethod=marker:foldlevel=0
