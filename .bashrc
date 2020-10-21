@@ -3,6 +3,7 @@
 #
 
 export PATH=$PATH:~/bin
+export PYTHONPATH=/usr/local/bin/python3
 
 #Pywal Config
 (cat ~/.cache/wal/sequences &)

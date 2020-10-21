@@ -33,6 +33,7 @@ endif
 call plug#begin()
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
@@ -48,8 +49,12 @@ call plug#end()
 map <C-o> :NERDTreeToggle<CR>
 map <leader>o :FZF<CR>
 
+"Colourscheme
 let g:dracula_colorterm = 0
 colorscheme dracula
+
+"Coc
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 
 "Lightline
 let g:lightline = {
@@ -65,7 +70,7 @@ let g:tex_flavor = 'latex'
 "Vim-Rainbow
 "let g:rainbow_active = 1
 
- }}}
+" }}}
 
 """ Formatting {{{ 
 

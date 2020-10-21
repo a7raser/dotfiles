@@ -142,7 +142,7 @@ colors:
     white:   '0xbfbfbf'
 
   # Bright colors
-  # bright:
+  bright:
     black:   '0x4d4d4d'
     red:     '0xff6e67'
     green:   '0x5af78e'
