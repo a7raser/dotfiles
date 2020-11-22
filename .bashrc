@@ -16,6 +16,11 @@ if [[ -r "/usr/share/pureline/pureline" ]]; then
     source /usr/share/pureline/pureline ~/.pureline.conf
 fi
 
+### LaTeX
+PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
@@ -30,3 +35,6 @@ alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/
 alias vim='nvim'
 
 set -o vi
+
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash

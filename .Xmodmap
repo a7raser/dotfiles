@@ -2,9 +2,11 @@
 
 ! Clear affected keys
 clear lock
+clear control
 
 ! Caps as left Escape
-keycode 66 = Escape 
+keycode 66 = Control_L 
+add control = Control_L Control_R
 
 ! Keep Super in left Win
 ! keycode 133 = Super_L

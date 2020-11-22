@@ -7,9 +7,13 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+nnoremap <leader>p :Buffers<Cr>
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 map J 5j
 map K 5k
+map H ^
+map L $
 map gj gJ
 map Y y$
 
@@ -39,12 +43,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'preservim/nerdtree'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-nnoremap <C-o> :NERDTreeToggle<Cr>
 nnoremap <silent> <leader>o :FZF<Cr>
 
 "Colourscheme
@@ -78,10 +80,10 @@ set number
 set relativenumber
 
 " Spaces & Tabs
-set tabstop=4
+set tabstop=2
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set wrap
 set formatoptions=tcqrn1
 set noshiftround
@@ -297,7 +299,7 @@ nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

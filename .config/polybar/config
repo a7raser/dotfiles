@@ -18,8 +18,8 @@ alert = ${xrdb:color3:#222}
 [bar/bspwm]
 monitor = eDP-1
 ;monitor-fallback = ${env:MONITOR} 
-width = 100%
-height = 24
+width = 100% 
+height = 2.5% 
 offset-x = 0%
 offset-y = 0%
 ;radius = 10.0
@@ -34,27 +34,29 @@ line-color = #f00
 ;border-size = 2
 ;border-color = #00000000
 
-padding-left = 1
-padding-right = 1
+padding-left = 0
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = siji:pixelsize=10;2
-font-1 = Hack:size=12;2
-font-2 = FontAwesome 5 Free:size=10:style=Solid;2
-font-3 = Material Icons:style=Regular;2
-font-4 = Font Awesome 5 Brands:pixelsize=12;2
-font-5 = Font Awesome 5 Free:pixelsize=12;2
-font-6 = DejaVu Sans Mono:size=12;2 
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = menu pulseaudio wlan memory cpu temperature battery2 date
+;font-0 = Material Icons:pixelsize=18;5
+font-0 = Open Sans:pixelsize=11:style=bold;2
+font-1 = Material Design Icons:size=18:style=Regular;4
+font-2 = Open Sans:size=20:style=Regular;2
+font-3 = Font Awesome 5 Brands:pixelsize=14;2
+font-4 = Font Awesome 5 Free:pixelsize=12;2
+font-5 = Font Awesome 5 Free:size=14:style=Solid;4
+font-6 = Material Design Icons:size=22:style=Regular;5
 
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
+modules-left = bspwm 
+modules-center = xwindow 
+modules-right = pulseaudio wlan memory cpu temperature date 
+
+tray-position = right 
+tray-padding = 0
+tray-background = ${colors.background} 
 
 wm-restack = bspwm
 ;override-redirect = true
@@ -67,6 +69,7 @@ cursor-click = pointer
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+label-background = ${colors.background}
 
 [module/filesystem]
 type = internal/fs
@@ -79,35 +82,33 @@ label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
-type = internal/bspwm
+type = internal/bspwm 
 
-ws-icon-0 = 1; 
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-label-focused = %icon%
-label-focused-background = ${colors.background-semi} 
+ws-icon-0 = 1;%{F#ffffff}󰆍%{F-}
+ws-icon-1 = 2;%{F#00c0ff}󰘦%{F-}
+ws-icon-2 = 3;%{F#ff004b}󰂖%{F-}
+ws-icon-3 = 4;%{F#ffca00}󰇧%{F-}
+ws-icon-4 = 5;%{F#2944f2}󰻨%{F-}
+ws-icon-5 = 6;%{F#21cf5f}󰄘%{F-}
+ws-icon-6 = 7;%{F#d448ff}󰷏%{F-}
+ws-icon-7 = 8;%{F#ff8c00}󰹻%{F-}
+ws-icon-8 = 9;%{F#c46a4b}󰆉%{F-}
+label-focused = %{T3} {%icon%} %{T-}
+label-focused-background = ${colors.background}
 ;label-focused-underline= #ccff33
-label-focused-padding = 2
+;label-focused-padding = 
 
 label-occupied = %icon%
-label-occupied-padding = 2
+label-occupied-padding = 1
+label-occupied-background = ${colors.background}
 
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
-label-empty = %icon%
-label-empty-foreground = #808080
-label-empty-padding = 2
-
-label-separator = 
-
+label-empty = 
+label-empty-foreground = 
+label-empty-padding = 
 
 [module/mpd]
 type = internal/mpd
@@ -148,19 +149,26 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "󰍛 "
+;format-prefix-foreground = #178AAA
+format-prefix-foreground = #00c0ff
+format-prefix-background = ${colors.background}
+;format-foreground = #178AAA
 format-underline = ${xrdb:color5:#222} 
 ;format-underline = #f47b00
+label-background = ${colors.background}
 label = %percentage:2%%
+
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "󰆼 "
+format-prefix-foreground = #d448ff
+format-prefix-background = ${colors.background}
 format-underline = ${xrdb:color4:#222} 
 ;format-underline = #FFDF00
+label-background = ${colors.background}
 label = %percentage_used%%
 
 [module/wlan]
@@ -168,17 +176,27 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal><label-connected>
 format-connected-underline = ${xrdb:color3:#222} 
 ;format-connected-underline = #66ff33
 label-connected = %essid% 
+label-connected-padding = 1
+label-connected-background = ${colors.background}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected =  %ifname% 
-label-disconnected-foreground = 
-ramp-signal-0 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+label-disconnected =  󰤮%ifname% 
+label-disconnected-foreground = #ff004b
+label-disconnected-background = ${colors.background}
+ramp-signal-0 = 󰤟
+ramp-signal-1 = 󰤢
+ramp-signal-2 = 󰤥
+ramp-signal-3 = 󰤨
+ramp-signal-0-foreground = #ff8c00
+ramp-signal-1-foreground = #ffca00
+ramp-signal-2-foreground = #21cf5f
+ramp-signal-3-foreground = #21cf5f
+ramp-signal-background = ${colors.background}
 
 [module/date]
 type = internal/date
@@ -192,39 +210,27 @@ time-alt = %H:%M
 
 ;format-underline = #cc00cc
 format-underline = ${xrdb:color8:#222}
-
+label-background = ${colors.background}
 label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume> <bar-volume>
-
+format-volume = <ramp-volume><label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
+label-volume-background = ${colors.background}
 
-label-muted =  muted
+label-muted = 󰖁
 label-muted-foreground = ${colors.foreground-alt}
 label-muted-underline = #0099ff
+label-muted-background = ${colors.background}
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-foreground = ${colors.foreground-alt}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.secondary}
-bar-volume-foreground-1 = ${colors.secondary}
-bar-volume-foreground-2 = ${colors.secondary}
-bar-volume-foreground-3 = ${colors.secondary}
-bar-volume-foreground-4 = ${colors.secondary}
-bar-volume-foreground-5 = ${colors.secondary}
-bar-volume-foreground-6 = ${colors.alert}
-bar-volume-gradient = false
-bar-volume-indicator = | 
-bar-volume-fill = ─
-bar-volume-empty = ─
-bar-volume-empty-foreground = ${colors.foreground-alt}
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+ramp-volume-foreground = #ffca00
+ramp-volume-background = ${colors.background}
 
 format-volume-underline = ${xrdb:color2:#222}
 ;format-volume-underline = #0099ff
@@ -306,20 +312,25 @@ type = internal/temperature
 thermal-zone = 1 
 warn-temperature = 75
 
-format = <ramp> <label>
+format = <ramp><label>
 format-underline = ${xrdb:color7:#222}
 ;format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+format-warn = <ramp><label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c% 
-label-warn = %temperature-c%
+label = %temperature%
+label-padding = 1
+label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
+label-background = ${colors.background}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 󰜗
+ramp-1 = 󰔐
+ramp-2 = 󰸁
+ramp-0-foreground = #00c0ff
+ramp-1-foreground = #ff8c00
+ramp-2-foreground = #ff004b
+ramp-background = ${colors.background}
 
 [module/menu]
 type = custom/menu
@@ -328,25 +339,35 @@ expand-left = true
 
 format-spacing = 1
 
-label-open = " "
+label-open = "󰤆"
 label-open-foreground = ${colors.foreground-alt}
 label-close = " "
 label-close-foreground = ${colors.foreground-alt}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = Shutdown
+label-open-background = ${colors.background}
+label-close-background = ${colors.background}
+label-separator-background = ${colors.background}
+
+menu-0-0 = "󰤆"
 menu-0-0-exec = systemctl poweroff
-menu-0-1 = Restart
+menu-0-0-background = ${colors.background}
+menu-0-1 = 󰦛
 menu-0-1-exec = systemctl reboot
-menu-0-2 = Logout
+menu-0-1-background = ${colors.background}
+menu-0-2 = 󰿅
 menu-0-2-exec = bspc quit
-menu-0-3 = Suspend
+menu-0-2-background = ${colors.background}
+menu-0-3 = 󰿄
 menu-0-3-exec = systemctl suspend
-menu-0-4 = Firmware
+menu-0-3-background = ${colors.background}
+menu-0-4 = 󱄍
 menu-0-4-exec = systemctl reboot --firmware-setup
-menu-0-5 = Lock
+menu-0-4-background = ${colors.background}
+menu-0-5 = 󰜺
 menu-0-5-exec = betterlockscreen -l dimblur 
+menu-0-5-background = ${colors.background}
 
 [settings]
 screenchange-reload = true

@@ -1,4 +1,4 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "{XDG_CACHE_HOME:-$HOME/.cache}p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -12,6 +12,18 @@ export PYTHONPATH=/usr/local/bin/python3
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 source $ZSH/oh-my-zsh.sh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fzf configuration
+export FZF_DEFAULT_COMMAND='fd --type f --no-ignore-vcs --follow --exclude .git'
+export FZF_COMPLETION_OPTS='+c -x'
+export FZF_DEFAULT_OPTS='--height 60% --layout reverse --inline-info --color --multi --extended'
+fzf_compgen_path() {
+fd --no-ignore-vcs --follow --exclude ".git" . "$1"
+}
+_fzf_compgen_dir() {
+fd --type d --no-ignore-vcs --follow --exclude ".git" . "$1"
+}
 
 # User configuration
 
@@ -28,7 +40,6 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVM_DIR="$HOME/.nvm"
@@ -57,3 +68,5 @@ INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
