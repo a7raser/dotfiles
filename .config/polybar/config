@@ -192,7 +192,7 @@ ramp-signal-0 = 󰤟
 ramp-signal-1 = 󰤢
 ramp-signal-2 = 󰤥
 ramp-signal-3 = 󰤨
-ramp-signal-0-foreground = #ff8c00
+ramp-signal-0-foreground = #ffca00
 ramp-signal-1-foreground = #ffca00
 ramp-signal-2-foreground = #21cf5f
 ramp-signal-3-foreground = #21cf5f
@@ -321,15 +321,19 @@ format-warn-underline = ${self.format-underline}
 label = %temperature%
 label-padding = 1
 label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = #ff8c00
 label-background = ${colors.background}
 
 ramp-0 = 󰜗
 ramp-1 = 󰔐
-ramp-2 = 󰸁
-ramp-0-foreground = #00c0ff
-ramp-1-foreground = #ff8c00
+ramp-2 = 󰔐
+ramp-3 = 󰔐
+ramp-4 = 󰸁
+ramp-0-foreground = #ff004b
+ramp-1-foreground = #ff004b
 ramp-2-foreground = #ff004b
+ramp-3-foreground = #ff004b
+ramp-4-foreground = #ff004b
 ramp-background = ${colors.background}
 
 [module/menu]
