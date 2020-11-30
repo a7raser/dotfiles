@@ -401,7 +401,7 @@ key_bindings:
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control|Shift,       action: ResetFontSize    }
   - { key: Equals,   mods: Control|Shift,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control|Shift,       action: DecreaseFontSize }
+  - { key: Minus, mods: Control|Shift,       action: DecreaseFontSize }
   - { key: Up,       mods: Control|Shift,       action: ScrollPageUp }
   - { key: Down,       mods: Control|Shift,       action: ScrollPageDown }
 
