@@ -52,7 +52,7 @@ font-6 = Material Design Icons:size=22:style=Regular;5
 
 modules-left = bspwm 
 modules-center = xwindow 
-modules-right = pulseaudio wlan memory cpu temperature date 
+modules-right = pulseaudio backlight-acpi wlan memory cpu temperature date 
 
 tray-position = right 
 tray-padding = 0
@@ -127,19 +127,10 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+format = <label> 
+format-prefix = "󰖙"
+format-prefix-foreground = "#ff8c00"
+label = %percentage%% 
 
 [module/backlight-acpi]
 inherit = module/xbacklight

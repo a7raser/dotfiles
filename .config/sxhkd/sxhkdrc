@@ -2,10 +2,10 @@
 
 #Terminal
 super + Return
-	alacritty
+    kitty 
 #Terminal + Tmux
 super + shift + Return
-    alacritty -e tmux
+    kitty -e tmux
 #Program Launcher
 super + d
 	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
@@ -147,19 +147,26 @@ alt + {p,o,comma,period}
 
 #Hide Node
 super + w
-    stack_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
-    target_node=$(bspc query -N -n focused);              \
-    echo "$target_node" >>  "$stack_file";                \
+    node_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(bspc query -N -n focused);             \
+    echo "$target_node" >>  "$node_file";                \
     bspc node "$target_node" --flag hidden=on
     #bspc node -g hidden=on
-#Unhide Most Recent Node
+#Unhide Oldest Node
 super + shift + w
-    stack_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
-    target_node=$(tail --lines=1 "$stack_file");          \
-    sed -i '$d' "$stack_file";                            \
-    bspc node "$target_node" --to-desktop focused;        \
+    node_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(head --lines=1 "$node_file");          \
+    sed -i '1d' "$node_file";                            \
+    bspc node "$target_node" --to-desktop focused;       \
     bspc node "$target_node" --flag hidden=off
     #bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+#Unhide Most Recent Node
+super + ctrl + w
+    node_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(tail --lines=1 "$node_file");          \
+    sed -i '$d' "$node_file";                            \
+    bspc node "$target_node" --to-desktop focused;       \
+    bspc node "$target_node" --flag hidden=off
 #Hide All
 alt + w
     bspwm_multinode --nha
@@ -221,8 +228,10 @@ XF86AudioNext
 XF86AudioPrev
 	playerctl prev @DEFAULT_SOURCE@
 #Brightness
-{XF86MonBrightnessDown,XF86MonBrightnessUp}
-    xbacklight {-dec,-inc} 5
+XF86MonBrightnessDown
+    xbacklight -dec 5
+XF86MonBrightnessUp
+    xbacklight -inc 5
 # }}}
 
 ### Resize{{{

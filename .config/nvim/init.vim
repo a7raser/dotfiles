@@ -10,10 +10,12 @@ noremap <right> <nop>
 nnoremap <leader>p :Buffers<Cr>
 nnoremap <Leader>b :ls<CR>:b<Space>
 
+noremap <silent>j gj
+noremap <silent>k gk
 map J 5j
 map K 5k
-map H ^
-map L $
+noremap <silent>H g^
+noremap <silent>L g$
 map gj gJ
 map Y y$
 
@@ -40,11 +42,12 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 call plug#end()
 
 nnoremap <silent> <leader>o :FZF<Cr>
@@ -54,7 +57,7 @@ let g:dracula_colorterm = 0
 colorscheme dracula
 
 "Coc
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-java']
 
 "Lightline
 let g:lightline = {
@@ -124,7 +127,8 @@ set showcmd
 """ Enable syntax processing
 syntax enable
 """ Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
+set showbreak=↪\ 
+set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,precedes:←,extends:→
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 map <leader>; :terminal<CR>
 " }}}
@@ -155,7 +159,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -251,7 +255,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+:nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
