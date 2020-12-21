@@ -2,8 +2,10 @@ if [[ -r "{XDG_CACHE_HOME:-$HOME/.cache}p10k-instant-prompt-${(%):-%n}.zsh" ]]; 
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+### Sets terminal colorscheme to match background
+### Does not work when launched /w tmux
+#(cat ~/.cache/wal/sequences &)
+#source ~/.cache/wal/colors-tty.sh
 
 export ZSH="/home/a7raser/.oh-my-zsh"
 export PATH=$PATH:~/bin
@@ -31,9 +33,9 @@ fd --type d --no-ignore-vcs --follow --exclude ".git" . "$1"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR='nvim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags

@@ -10,13 +10,13 @@ super + shift + Return
 super + d
 	rofi -show drun -sidebar-mode -config ~/.config/rofi/config.rasi
 #Run
-alt + shift + d 
+super + shift + d 
     rofi -show run -side-mode -config ~/.config/rofi/config.rasi
 #Task Switcher
 alt + d
 	rofi -show window -side-mode -config ~/.config/rofi/config.rasi
 #Ssh
-super + shift + d
+alt + shift + d
 	rofi -show ssh -side-mode -config ~/.config/rofi/config.rasi
 #Screenshot
 super + z
@@ -86,8 +86,8 @@ alt + shift + q
 alt + shift  + F4
 	bspwm_multinode --{kill}-all-local-non-focused
 #Focus Last Window/Desktop
-{alt,super} + grave
-	bspc {node,desktop} -f last.local
+#{alt,super} + grave
+	#bspc {node,desktop} -f last.local
 #Focus Next/Previous Window
 alt + {_,shift} + Tab
 	bspc node -f {next,prev}
@@ -167,6 +167,21 @@ super + ctrl + w
     sed -i '$d' "$node_file";                            \
     bspc node "$target_node" --to-desktop focused;       \
     bspc node "$target_node" --flag hidden=off
+#Scratchpad Emulation
+super + grave 
+    node_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(head --lines=1 "$node_file");          \
+    sed -i '1d' "$node_file";                            \
+    bspc node "$target_node" --to-desktop focused;       \
+    bspc node "$target_node" --flag hidden=off;          \
+    bspc node "$target_node" --state \~floating
+alt + grave 
+    node_file="$XDG_RUNTIME_DIR/bspwm_hidden_nodes.txt"; \
+    target_node=$(tail --lines=1 "$node_file");          \
+    sed -i '$d' "$node_file";                            \
+    bspc node "$target_node" --to-desktop focused;       \
+    bspc node "$target_node" --flag hidden=off;          \
+    bspc node "$target_node" --state \~floating
 #Hide All
 alt + w
     bspwm_multinode --nha

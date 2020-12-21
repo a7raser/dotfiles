@@ -1,19 +1,23 @@
 [colors]
-background = ${xrdb:color0:#222}
+;background = ${xrdb:color0:#222}
+background = #282828
 ;background = #99000000
-;background-alt = #222
-background-semi = ${xrdb:color2:#222}
+background-alt = #32302f
+;background-semi = ${xrdb:color2:#222}
+background-semi = #282828
 ;background-semi = #aa2F343F
-foreground = ${xrdb:color7:#222}
+;foreground = ${xrdb:color7:#222}
+foreground = #ebdbb2
 ;foreground = #dfdfdf
-foreground-alt = ${xrdb:color7:#222}
+;foreground-alt = ${xrdb:color7:#222}
+foreground-alt = #fbf1c7
 ;foreground-alt = #ffffff
-primary = ${xrdb:color1:#222}
+;primary = ${xrdb:color1:#222}
 ;primary = #ffb52a
-secondary = ${xrdb:color2:#222}
+;secondary = ${xrdb:color2:#222}
 ;secondary = #e60053
-alert = ${xrdb:color3:#222}
-;alert = #bd2c40
+;alert = ${xrdb:color3:#222}
+alert = #cc241d
 
 [bar/bspwm]
 monitor = eDP-1
@@ -42,9 +46,9 @@ module-margin-right = 1
 
 
 ;font-0 = Material Icons:pixelsize=18;5
-font-0 = Open Sans:pixelsize=11:style=bold;2
+font-0 = Fira Sans:pixelsize=12:style=bold;2
 font-1 = Material Design Icons:size=18:style=Regular;4
-font-2 = Open Sans:size=20:style=Regular;2
+font-2 = Open Sans:size=20:style=regular;2
 font-3 = Font Awesome 5 Brands:pixelsize=14;2
 font-4 = Font Awesome 5 Free:pixelsize=12;2
 font-5 = Font Awesome 5 Free:size=14:style=Solid;4
@@ -84,13 +88,13 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm 
 
-ws-icon-0 = 1;%{F#ffffff}󰆍%{F-}
-ws-icon-1 = 2;%{F#00c0ff}󰘦%{F-}
-ws-icon-2 = 3;%{F#ff004b}󰂖%{F-}
-ws-icon-3 = 4;%{F#21cf5f}󰇧%{F-}
-ws-icon-4 = 5;%{F#ffca00}󰻨%{F-}
-ws-icon-5 = 6;%{F#2944f2}󰄘%{F-}
-ws-icon-6 = 7;%{F#d448ff}󰷏%{F-}
+ws-icon-0 = 1;%{F#ebdbb2}󰆍%{F-}
+ws-icon-1 = 2;%{F#ff004b}󰘦%{F-}
+ws-icon-2 = 3;%{F#00c0ff}󰇧%{F-}
+ws-icon-3 = 4;%{F#21cf5f}󰻨%{F-}
+ws-icon-4 = 5;%{F#d448ff}󰂖%{F-}
+ws-icon-5 = 6;%{F#ffca00}󰄘%{F-}
+ws-icon-6 = 7;%{F#2944f2}󰷏%{F-}
 ws-icon-7 = 8;%{F#ff8c00}󰹻%{F-}
 ws-icon-8 = 9;%{F#c46a4b}󰆉%{F-}
 label-focused = %{T3} {%icon%} %{T-}

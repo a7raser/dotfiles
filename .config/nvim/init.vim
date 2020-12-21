@@ -35,7 +35,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -45,25 +47,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim' 
 Plug 'sheerun/vim-polyglot'
+Plug 'leafoftree/vim-vue-plugin'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 call plug#end()
 
 nnoremap <silent> <leader>o :FZF<Cr>
 
-"Colourscheme
-let g:dracula_colorterm = 0
-colorscheme dracula
-
 "Coc
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-java']
 
+"Colourscheme
+set termguicolors
+colorscheme base16-gruvbox-dark-medium
+
 "Lightline
-let g:lightline = {
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' },
-            \ }
+"let g:lightline = {
+"            \ 'separator': { 'left': '', 'right': '' },
+"            \ 'subseparator': { 'left': '', 'right': '' },
+"            \ }
 
 "Vimtex
 let g:vimtex_compiler_progname = 'nvr'
@@ -71,6 +74,10 @@ let g:tex_flavor = 'latex'
 
 "Vim-Rainbow
 "let g:rainbow_active = 1
+
+"Vue Syntax 
+let g:vim_vue_plugin_highlight_vue_attr = 1
+let g:vim_vue_plugin_highlight_vue_keyword = 1
 
 " }}}
 
