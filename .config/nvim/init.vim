@@ -3,10 +3,13 @@ set mouse=a
 
 let mapleader = " "
 
+nnoremap <Cr> G
+
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+
 nnoremap <leader>p :Buffers<Cr>
 nnoremap <Leader>b :ls<CR>:b<Space>
 
@@ -47,7 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
-Plug 'chriskempson/base16-vim' 
+Plug 'chriskempson/base16-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'leafoftree/vim-vue-plugin'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
@@ -75,19 +78,19 @@ let g:tex_flavor = 'latex'
 "Vim-Rainbow
 "let g:rainbow_active = 1
 
-"Vue Syntax 
+"Vue Syntax
 let g:vim_vue_plugin_highlight_vue_attr = 1
 let g:vim_vue_plugin_highlight_vue_keyword = 1
 
 " }}}
 
-""" Formatting {{{ 
+""" Formatting {{{
 
 set cursorline
 
 " Number lines
 set number
-set relativenumber
+"set relativenumber
 
 " Spaces & Tabs
 set tabstop=2
@@ -134,7 +137,7 @@ set showcmd
 """ Enable syntax processing
 syntax enable
 """ Visualize tabs and newlines
-set showbreak=↪\ 
+set showbreak=↪\
 set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,precedes:←,extends:→
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 map <leader>; :terminal<CR>

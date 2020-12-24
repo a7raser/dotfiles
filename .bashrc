@@ -6,8 +6,8 @@ export PATH=$PATH:~/bin
 export PYTHONPATH=/usr/local/bin/python3
 
 #Pywal Config
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+#(cat ~/.cache/wal/sequences &)
+#source ~/.cache/wal/colors-tty.sh
 
 #Pureline
 #To use, copy a config from /usr/share/pureline/configs to ~/.pureline.conf
@@ -38,3 +38,4 @@ set -o vi
 
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
+source "$HOME/.cargo/env"

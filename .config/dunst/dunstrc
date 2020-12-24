@@ -1,5 +1,5 @@
 [global]
-    font = Fira Sans 12 
+    font = Open Sans 10
 
     # <b>bold</b>
     # <i>italic</i>
@@ -52,7 +52,7 @@
 
     # geometry [{width}]x{height}][+/-{x}+/-{y}]
     # The height is measured in number of notifications everything else in pixels. 
-    geometry = "384x5-15+40"
+    geometry = "384x5-15+42"
 
     notification_height = 0 
     shrink = true
