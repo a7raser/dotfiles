@@ -4,6 +4,7 @@ set mouse=a
 let mapleader = " "
 
 nnoremap <Cr> G
+vnoremap <Cr> G
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -38,7 +39,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-"Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -59,28 +59,30 @@ call plug#end()
 nnoremap <silent> <leader>o :FZF<Cr>
 
 "Coc
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-java']
+let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-omnisharp', 'coc-java']
 
 "Colourscheme
 set termguicolors
 colorscheme base16-gruvbox-dark-medium
 
-"Lightline
-"let g:lightline = {
-"            \ 'separator': { 'left': '', 'right': '' },
-"            \ 'subseparator': { 'left': '', 'right': '' },
-"            \ }
-
 "Vimtex
 let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor = 'latex'
 
-"Vim-Rainbow
-"let g:rainbow_active = 1
+"JSX
+let g:vim_jsx_pretty_colorful_config = 1
+"let g:vim_jsx_pretty_highlight_close_tag = 1
 
 "Vue Syntax
 let g:vim_vue_plugin_highlight_vue_attr = 1
 let g:vim_vue_plugin_highlight_vue_keyword = 1
+
+"Custom colours
+"JSX Tags
+autocmd ColorScheme *
+        \ highlight jsxOpenPunct guifg=#8ec07c |
+        \ highlight jsxClosePunct guifg=#8ec07c |
+        \ highlight jsxCloseString guifg=#8ec07c |
 
 " }}}
 
@@ -90,7 +92,12 @@ set cursorline
 
 " Number lines
 set number
-"set relativenumber
+set relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Spaces & Tabs
 set tabstop=2
@@ -107,7 +114,6 @@ set breakindent
 
 """ Config {{{
 set nocompatible
-set mouse=a
 
 " Cursor Motion
 set visualbell

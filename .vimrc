@@ -4,14 +4,19 @@ set mouse=a
 """ Mappings"{{{
 
 let mapleader = " "
+nnoremap <Cr> G
 
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
+noremap <silent>j gj
+noremap <silent>k gk
 map J 5j
 map K 5k
+noremap <silent>H g^
+noremap <silent>L g$
 map gj gJ
 map Y y$
 
@@ -31,60 +36,60 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'preservim/nerdtree'
+Plug 'Yggdroot/indentLine'
+Plug 'chriskempson/base16-vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'leafoftree/vim-vue-plugin'
+Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 call plug#end()
 
-map <C-o> :NERDTreeToggle<CR>
-map <leader>o :FZF<CR>
-
-"Colourscheme
-let g:dracula_colorterm = 0
-colorscheme dracula
+nnoremap <silent> <leader>o :FZF<Cr>
 
 "Coc
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-omnisharp', 'coc-java']
 
-"Lightline
-let g:lightline = {
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' },
-            \ }
+"Colourscheme
+set t_Co=256
+let base16colorspace=256
+"set termguicolors
+colorscheme base16-gruvbox-dark-medium
 
 "Vimtex
-let g:vimtex_view_method = 'okular'
 let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor = 'latex'
 
 "Vim-Rainbow
 "let g:rainbow_active = 1
 
+"Vue Syntax
+let g:vim_vue_plugin_highlight_vue_attr = 1
+let g:vim_vue_plugin_highlight_vue_keyword = 1
+
 " }}}
 
-""" Formatting {{{ 
+""" Formatting {{{
 
 set cursorline
 
 " Number lines
 set number
-set relativenumber
+"set relativenumber
 
 " Spaces & Tabs
-set tabstop=4
+set tabstop=2
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set wrap
 set formatoptions=tcqrn1
 set noshiftround
@@ -98,6 +103,7 @@ set nocompatible
 
 " Cursor Motion
 set visualbell
+set t_vb=
 set scrolloff=3
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
@@ -124,10 +130,8 @@ set showcmd
 """ Enable syntax processing
 syntax enable
 """ Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-"  set list " To enable by default
-" Or use your leader key + l to toggle on/off
+set showbreak=↪\
+set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,precedes:←,extends:→
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 map <leader>; :terminal<CR>
 " }}}
@@ -158,7 +162,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -218,7 +222,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <leader> m :call <SID>show_documentation()<CR>
+nnoremap <leader>m :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -235,8 +239,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>r  <Plug>(coc-format-selected)
+nmap <leader>r  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -254,7 +258,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+:nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -275,7 +279,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` comand to fol current buffer.
+" Add `:Fold` command to fl current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
@@ -288,21 +292,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>u  :<C-u>CocList outline<cr>
+" search workspace symbols.
+" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>d
+" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>o
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

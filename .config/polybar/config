@@ -320,7 +320,7 @@ label-warn-foreground = #ff8c00
 label-background = ${colors.background}
 
 ramp-0 = 󰜗
-ramp-1 = 󰔐
+ramp-1 = 󰜗
 ramp-2 = 󰔐
 ramp-3 = 󰔐
 ramp-4 = 󰸁

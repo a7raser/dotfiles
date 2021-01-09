@@ -32,3 +32,5 @@ fi
 
 ### Run programs
 exec bspwm
+#exec startplasma-x11
+#exec dwm
