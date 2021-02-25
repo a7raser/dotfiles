@@ -3,6 +3,10 @@ set mouse=a
 
 let mapleader = " "
 
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 nnoremap <Cr> G
 vnoremap <Cr> G
 
@@ -41,33 +45,32 @@ endif
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'lervag/vimtex'
+
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'Yggdroot/indentLine'
 Plug 'chriskempson/base16-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'uiiaoo/java-syntax.vim'
 Plug 'leafoftree/vim-vue-plugin'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 call plug#end()
 
 nnoremap <silent> <leader>o :FZF<Cr>
+nmap <F8> :TagbarToggle<CR>
 
 "Coc
-let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-omnisharp', 'coc-java']
+let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-omnisharp', 'coc-java', 'coc-java-debug']
 
 "Colourscheme
 set termguicolors
 colorscheme base16-gruvbox-dark-medium
-
-"Vimtex
-let g:vimtex_compiler_progname = 'nvr'
-let g:tex_flavor = 'latex'
 
 "JSX
 let g:vim_jsx_pretty_colorful_config = 1
@@ -76,8 +79,15 @@ let g:vim_jsx_pretty_colorful_config = 1
 "Vue Syntax
 let g:vim_vue_plugin_highlight_vue_attr = 1
 let g:vim_vue_plugin_highlight_vue_keyword = 1
+let g:vue_pre_processors="detect_on_enter"
 
 "Custom colours
+"Typescript
+autocmd ColorScheme *
+        \ highlight typescriptDefault guifg=#fe8019 |
+        \ highlight typescriptIdentifier guifg=#fb4934 |
+        \ highlight typescriptClassName guifg=#83a598 |
+
 "JSX Tags
 autocmd ColorScheme *
         \ highlight jsxOpenPunct guifg=#8ec07c |
@@ -115,34 +125,22 @@ set breakindent
 """ Config {{{
 set nocompatible
 
-" Cursor Motion
 set visualbell
 set scrolloff=3
 set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
+set matchpairs+=<:>
 
-" File Stats
 set ruler
-" Security
 set modelines=0
-" Encoding
 set encoding=utf-8
-" Better Command-Line Completion
 set wildmenu
-""" Allow hidden buffers
 set hidden
-""" Rendering
 set ttyfast
-""" Status bar
 set laststatus=2
-""" Don't redraw when executing macros
 set lazyredraw
-""" Last Line
 set showmode
 set showcmd
-""" Enable syntax processing
 syntax enable
-""" Visualize tabs and newlines
 set showbreak=↪\
 set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,precedes:←,extends:→
 map <leader>l :set list!<CR> " Toggle tabs and EOL
@@ -292,7 +290,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` command to fol current buffer.
+" Add `:Fold` command to fl current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
@@ -319,7 +317,7 @@ nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CRo
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

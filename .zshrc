@@ -8,7 +8,7 @@ fi
 #source ~/.cache/wal/colors-tty.sh
 
 export ZSH="/home/a7raser/.oh-my-zsh"
-export PATH=$PATH:~/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 export PYTHONPATH=/usr/local/bin/python3
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf configuration
-export FZF_DEFAULT_COMMAND='fd --type f --no-ignore-vcs --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_COMPLETION_OPTS='+c -x'
 export FZF_DEFAULT_OPTS='--height 60% --layout reverse --inline-info --color --multi --extended'
 fzf_compgen_path() {
@@ -49,6 +49,8 @@ export NVM_DIR="$HOME/.nvm"
 ### Alias'
 alias vim='nvim'
 alias ytop='ytop -p'
+alias ls='exa'
+alias l='exa -lahF'
 
 set -o vi
 KEYTIMEOUT=1

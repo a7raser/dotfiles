@@ -4,7 +4,7 @@
 ### Variables
 set $mod Mod4
 set $mod2 Mod1
-set $term exec --no-startup-id alacritty
+set $term exec --no-startup-id kitty
 set $menu exec --no-startup-id rofi -show drun -sidebar-mode -config ~/.config/rofi/config
 set $task exec --no-startup-id rofi -show window -side-mode -config ~/.config/rofi/config
 set $screenshot scrot ~/media/images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -58,7 +58,7 @@ smart_borders on
 
 #Gaps
 smart_gaps on
-gaps inner 10
+gaps inner 5 
 
 
 ### Shortcuts
